@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home — Learn DevOps from Basics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--ink:#070b1f;--ink-2:#120a2e;--gold:#e8c66b;--gold-bright:#f6dd93;--teal:#38e0c8;--violet:#8a6df0;--cream:#f3ecdd;--muted:#a99fc0;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--ink);color:var(--cream);min-height:100vh;overflow-x:hidden;position:relative;}
+        .aurora{position:fixed;inset:-20%;z-index:-3;background:radial-gradient(40% 55% at 20% 25%,rgba(138,109,240,.55),transparent 60%),radial-gradient(45% 50% at 80% 30%,rgba(56,224,200,.40),transparent 62%),radial-gradient(55% 60% at 50% 85%,rgba(232,198,107,.30),transparent 60%),radial-gradient(50% 50% at 75% 75%,rgba(138,109,240,.35),transparent 60%);filter:blur(40px) saturate(140%);animation:drift 26s ease-in-out infinite alternate;}
+        @keyframes drift{0%{transform:translate3d(-3%,-2%,0) rotate(0deg) scale(1.05);}50%{transform:translate3d(4%,3%,0) rotate(8deg) scale(1.15);}100%{transform:translate3d(-2%,4%,0) rotate(-6deg) scale(1.08);}}
+        .vignette{position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(180deg,rgba(7,11,31,.75) 0%,rgba(7,11,31,.35) 40%,rgba(7,11,31,.85) 100%);}
+        .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+        .star{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 6px 1px rgba(246,221,147,.8);animation:twinkle 4s ease-in-out infinite,float-up 22s linear infinite;opacity:0;}
+        @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.9}}
+        @keyframes float-up{from{transform:translateY(0);}to{transform:translateY(-120vh);}}
+        header{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(7,11,31,.55);border-bottom:1px solid rgba(232,198,107,.22);}
+        nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:2.4rem;padding:1.1rem 1rem;}
+        nav ul li a{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-decoration:none;position:relative;transition:color .3s;}
+        nav ul li a::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:width .35s ease;}
+        nav ul li a:hover{color:var(--gold-bright);}
+        nav ul li a:hover::after{width:100%;}
+        .hero{text-align:center;padding:6rem 1.5rem 2rem;}
+        .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--teal);margin-bottom:1.4rem;opacity:0;animation:rise .9s ease .1s forwards;transform:translateY(24px);}
+        .name{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.6rem,8.5vw,6rem);line-height:.98;letter-spacing:-.02em;background:linear-gradient(180deg,var(--gold-bright),var(--gold) 55%,#b9923f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 30px rgba(232,198,107,.35));opacity:0;animation:rise 1s ease .25s forwards;transform:translateY(24px);}
+        .name .it{font-style:italic;font-weight:500;}
+        .tagline{font-size:clamp(1.15rem,2.4vw,1.6rem);font-style:italic;color:var(--cream);margin:1.2rem auto 0;max-width:640px;font-weight:400;opacity:0;animation:rise 1s ease .45s forwards;transform:translateY(24px);}
+        .rule{width:0;height:1px;margin:2.2rem auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:expand 1.4s ease .8s forwards;}
+        @keyframes rise{to{opacity:1;transform:translateY(0);}}
+        @keyframes expand{to{width:min(420px,70%);}}
+        .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem;opacity:0;animation:rise 1s ease .6s forwards;transform:translateY(24px);}
+        .btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;padding:.9rem 1.8rem;border-radius:999px;text-decoration:none;transition:all .3s;}
+        .btn-gold{background:linear-gradient(180deg,var(--gold-bright),var(--gold));color:#231a05;font-weight:500;}
+        .btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 40px -12px rgba(232,198,107,.6);}
+        .btn-ghost{border:1px solid rgba(232,198,107,.4);color:var(--gold-bright);}
+        .btn-ghost:hover{border-color:var(--gold);background:rgba(232,198,107,.08);transform:translateY(-3px);}
+        main{max-width:1000px;margin:0 auto;padding:3rem 1.6rem 7rem;}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;margin-top:1rem;}
+        .card{padding:2rem 1.8rem;border:1px solid rgba(232,198,107,.2);border-radius:16px;background:rgba(18,10,46,.35);backdrop-filter:blur(6px);transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s;}
+        .card:hover{transform:translateY(-6px);border-color:rgba(232,198,107,.55);box-shadow:0 18px 50px -20px rgba(232,198,107,.4);}
+        .card .idx{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.2em;color:var(--teal);}
+        .card h2{font-family:'Playfair Display',serif;font-weight:700;font-size:1.55rem;color:var(--gold-bright);margin:.7rem 0 .8rem;}
+        .card p{font-size:1.12rem;line-height:1.65;color:var(--cream);}
+        .card a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(56,224,200,.4);}
+        .card a:hover{color:var(--gold-bright);border-color:var(--gold);}
+        footer{text-align:center;padding:2.4rem 1rem;border-top:1px solid rgba(232,198,107,.2);background:rgba(7,11,31,.6);}
+        footer p{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.22em;color:var(--muted);}
+        footer .g{color:var(--gold);}
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;}
+        .reveal.in{opacity:1;transform:none;}
+        @media (prefers-reduced-motion:reduce){.aurora{animation:none;}.star{animation:twinkle 4s ease-in-out infinite;}.eyebrow,.name,.tagline,.rule,.cta-row{animation:none;opacity:1;transform:none;}.rule{width:min(420px,70%);}.reveal{opacity:1;transform:none;transition:none;}}
+    </style>
+</head>
+<body>
+    <div class="aurora"></div><div class="vignette"></div><div class="stars" id="stars"></div>
+    <header><nav><ul>
+        <li><a href="home">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="courses">Courses</a></li>
+    </ul></nav></header>
+
+    <section class="hero">
+        <p class="eyebrow">Free &middot; Self-Paced &middot; Zero to Hero</p>
+        <h1 class="name">Learn DevOps<br><span class="it">from Basics</span></h1>
+        <p class="tagline">Your free guide to mastering DevOps &mdash; the best resources, from first principles to production.</p>
+        <div class="rule"></div>
+        <div class="cta-row">
+            <a href="courses" class="btn btn-gold">Browse Courses</a>
+            <a href="about" class="btn btn-ghost">About the Author</a>
+        </div>
+    </section>
+
+    <main>
+        <div class="cards">
+            <div class="card reveal">
+                <div class="idx">01 / PURPOSE</div>
+                <h2>Why This Exists</h2>
+                <p>This site guides people on how to learn DevOps from the basics, completely free. We point you to the best resources so you can go from zero to job-ready.</p>
+            </div>
+            <div class="card reveal">
+                <div class="idx">02 / SCOPE</div>
+                <h2>Overview</h2>
+                <p>Zero-to-Hero courses covering every major DevOps tool and the most popular cloud platforms &mdash; AWS and Azure.</p>
+            </div>
+            <div class="card reveal">
+                <div class="idx">03 / START</div>
+                <h2>Courses Offered</h2>
+                <p>Ready to dive in? Head to the <a href="courses">courses</a> section for the full catalog of tutorials.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer><p>&copy; <span class="g">Prasan Gupta</span> &middot; Crafted with Go &amp; caffeine</p></footer>
+
+    <script>
+        (function(){const w=document.getElementById('stars');for(let i=0;i<45;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.transform='scale('+(Math.random()*1.6+0.4)+')';s.style.animationDelay=(Math.random()*-22)+'s, '+(Math.random()*-4)+'s';s.style.animationDuration=(18+Math.random()*12)+'s, '+(3+Math.random()*3)+'s';w.appendChild(s);}})();
+        (function(){const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));})();
+    </script>
+</body>
+</html>

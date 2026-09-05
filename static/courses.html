@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn DevOps from Basics — Courses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--ink:#070b1f;--ink-2:#120a2e;--gold:#e8c66b;--gold-bright:#f6dd93;--teal:#38e0c8;--violet:#8a6df0;--cream:#f3ecdd;--muted:#a99fc0;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--ink);color:var(--cream);min-height:100vh;overflow-x:hidden;position:relative;}
+        .aurora{position:fixed;inset:-20%;z-index:-3;background:radial-gradient(40% 55% at 20% 25%,rgba(138,109,240,.55),transparent 60%),radial-gradient(45% 50% at 80% 30%,rgba(56,224,200,.40),transparent 62%),radial-gradient(55% 60% at 50% 85%,rgba(232,198,107,.30),transparent 60%),radial-gradient(50% 50% at 75% 75%,rgba(138,109,240,.35),transparent 60%);filter:blur(40px) saturate(140%);animation:drift 26s ease-in-out infinite alternate;}
+        @keyframes drift{0%{transform:translate3d(-3%,-2%,0) rotate(0deg) scale(1.05);}50%{transform:translate3d(4%,3%,0) rotate(8deg) scale(1.15);}100%{transform:translate3d(-2%,4%,0) rotate(-6deg) scale(1.08);}}
+        .vignette{position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(180deg,rgba(7,11,31,.75) 0%,rgba(7,11,31,.35) 40%,rgba(7,11,31,.85) 100%);}
+        .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+        .star{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 6px 1px rgba(246,221,147,.8);animation:twinkle 4s ease-in-out infinite,float-up 22s linear infinite;opacity:0;}
+        @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.9}}
+        @keyframes float-up{from{transform:translateY(0);}to{transform:translateY(-120vh);}}
+        header{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(7,11,31,.55);border-bottom:1px solid rgba(232,198,107,.22);}
+        nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:2.4rem;padding:1.1rem 1rem;}
+        nav ul li a{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-decoration:none;position:relative;transition:color .3s;}
+        nav ul li a::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:width .35s ease;}
+        nav ul li a:hover{color:var(--gold-bright);}
+        nav ul li a:hover::after{width:100%;}
+        .hero{text-align:center;padding:5rem 1.5rem 1rem;}
+        .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--teal);margin-bottom:1.3rem;opacity:0;animation:rise .9s ease .1s forwards;transform:translateY(24px);}
+        .name{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.4rem,7.5vw,5.2rem);line-height:1;letter-spacing:-.02em;background:linear-gradient(180deg,var(--gold-bright),var(--gold) 55%,#b9923f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 30px rgba(232,198,107,.35));opacity:0;animation:rise 1s ease .25s forwards;transform:translateY(24px);}
+        .intro{max-width:720px;margin:1.6rem auto 0;padding:0 1rem;}
+        .intro p{font-size:clamp(1.12rem,2.1vw,1.35rem);line-height:1.7;color:var(--cream);margin-bottom:1rem;opacity:0;animation:rise 1s ease .4s forwards;transform:translateY(24px);}
+        .rule{width:0;height:1px;margin:2rem auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:expand 1.4s ease .8s forwards;}
+        @keyframes rise{to{opacity:1;transform:translateY(0);}}
+        @keyframes expand{to{width:min(420px,70%);}}
+        main{max-width:1040px;margin:0 auto;padding:3.5rem 1.6rem 7rem;}
+        .group{margin-bottom:3.2rem;}
+        .group-label{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:1.4rem;display:flex;align-items:center;gap:1rem;}
+        .group-label::after{content:'';flex:1;height:1px;background:rgba(232,198,107,.25);}
+        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;}
+        .course{display:flex;align-items:center;gap:.9rem;padding:1.15rem 1.3rem;border:1px solid rgba(232,198,107,.2);border-radius:14px;background:rgba(18,10,46,.35);backdrop-filter:blur(6px);text-decoration:none;color:var(--cream);font-size:1.15rem;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s;}
+        .course:hover{transform:translateY(-5px);border-color:rgba(232,198,107,.6);box-shadow:0 16px 44px -20px rgba(232,198,107,.45);color:var(--gold-bright);}
+        .course .play{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(56,224,200,.12);border:1px solid rgba(56,224,200,.4);transition:all .35s;}
+        .course:hover .play{background:rgba(232,198,107,.15);border-color:var(--gold);}
+        .course .play svg{width:13px;height:13px;fill:var(--teal);transition:fill .35s;}
+        .course:hover .play svg{fill:var(--gold-bright);}
+        footer{text-align:center;padding:2.4rem 1rem;border-top:1px solid rgba(232,198,107,.2);background:rgba(7,11,31,.6);}
+        footer p{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.22em;color:var(--muted);}
+        footer .g{color:var(--gold);}
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;}
+        .reveal.in{opacity:1;transform:none;}
+        @media (prefers-reduced-motion:reduce){.aurora{animation:none;}.star{animation:twinkle 4s ease-in-out infinite;}.eyebrow,.name,.intro p,.rule{animation:none;opacity:1;transform:none;}.rule{width:min(420px,70%);}.reveal{opacity:1;transform:none;transition:none;}}
+    </style>
+</head>
+<body>
+    <div class="aurora"></div><div class="vignette"></div><div class="stars" id="stars"></div>
+    <header><nav><ul>
+        <li><a href="home">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="courses">Courses</a></li>
+    </ul></nav></header>
+
+    <section class="hero">
+        <p class="eyebrow">Zero to Hero &middot; Free Playlists</p>
+        <h1 class="name">Learn DevOps from Basics</h1>
+        <div class="intro">
+            <p>DevOps is a set of practices that combines software development (Dev) and IT operations (Ops).</p>
+            <p>It aims to shorten the systems development life cycle and provide continuous delivery with high software quality. DevOps is complementary with Agile software development &mdash; several DevOps aspects came from Agile methodology.</p>
+        </div>
+        <div class="rule"></div>
+    </section>
+
+    <main>
+        <div class="group reveal">
+            <div class="group-label">Main Tutorials</div>
+            <div class="grid">
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>DevOps Zero to Hero</a>
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvLNOxX0RfndiYSt1Le9azze"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>AWS Zero to Hero</a>
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvIcxgCUyBHVOcWs0Krjx9xR"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Azure Zero to Hero</a>
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Terraform Zero to Hero</a>
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvKwTyYNJCUwGPvql0TrsPgv"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Python Zero to Hero</a>
+            </div>
+        </div>
+
+        <div class="group reveal">
+            <div class="group-label">Additional Tutorials</div>
+            <div class="grid">
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvKv4MFW35XRskZbQbrt6ep-"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Networking Fundamentals</a>
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvLxd5nmtmORCmhD5jkrNbuE"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Ansible Zero to Hero</a>
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvKu7OZpgj1-MzJFqZ8RBp6f"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>GitOps Zero to Hero</a>
+            </div>
+        </div>
+
+        <div class="group reveal">
+            <div class="group-label">Troubleshooting Tutorials</div>
+            <div class="grid">
+                <a class="course" href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvIrFBI1farpLS_OSUBXJMLX"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Troubleshooting Kubernetes</a>
+            </div>
+        </div>
+    </main>
+
+    <footer><p>&copy; <span class="g">Abhishek.Veeramalla</span></p></footer>
+
+    <script>
+        (function(){const w=document.getElementById('stars');for(let i=0;i<45;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.transform='scale('+(Math.random()*1.6+0.4)+')';s.style.animationDelay=(Math.random()*-22)+'s, '+(Math.random()*-4)+'s';s.style.animationDuration=(18+Math.random()*12)+'s, '+(3+Math.random()*3)+'s';w.appendChild(s);}})();
+        (function(){const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));})();
+    </script>
+</body>
+</html>

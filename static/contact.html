@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--ink:#070b1f;--ink-2:#120a2e;--gold:#e8c66b;--gold-bright:#f6dd93;--teal:#38e0c8;--violet:#8a6df0;--cream:#f3ecdd;--muted:#a99fc0;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--ink);color:var(--cream);min-height:100vh;overflow-x:hidden;position:relative;display:flex;flex-direction:column;}
+        .aurora{position:fixed;inset:-20%;z-index:-3;background:radial-gradient(40% 55% at 20% 25%,rgba(138,109,240,.55),transparent 60%),radial-gradient(45% 50% at 80% 30%,rgba(56,224,200,.40),transparent 62%),radial-gradient(55% 60% at 50% 85%,rgba(232,198,107,.30),transparent 60%),radial-gradient(50% 50% at 75% 75%,rgba(138,109,240,.35),transparent 60%);filter:blur(40px) saturate(140%);animation:drift 26s ease-in-out infinite alternate;}
+        @keyframes drift{0%{transform:translate3d(-3%,-2%,0) rotate(0deg) scale(1.05);}50%{transform:translate3d(4%,3%,0) rotate(8deg) scale(1.15);}100%{transform:translate3d(-2%,4%,0) rotate(-6deg) scale(1.08);}}
+        .vignette{position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(180deg,rgba(7,11,31,.75) 0%,rgba(7,11,31,.35) 40%,rgba(7,11,31,.85) 100%);}
+        .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+        .star{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 6px 1px rgba(246,221,147,.8);animation:twinkle 4s ease-in-out infinite,float-up 22s linear infinite;opacity:0;}
+        @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.9}}
+        @keyframes float-up{from{transform:translateY(0);}to{transform:translateY(-120vh);}}
+        header{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(7,11,31,.55);border-bottom:1px solid rgba(232,198,107,.22);}
+        nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:2.4rem;padding:1.1rem 1rem;}
+        nav ul li a{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-decoration:none;position:relative;transition:color .3s;}
+        nav ul li a::after{content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:width .35s ease;}
+        nav ul li a:hover{color:var(--gold-bright);}
+        nav ul li a:hover::after{width:100%;}
+        main{flex:1;display:flex;align-items:center;justify-content:center;padding:4rem 1.6rem;}
+        .contact-card{max-width:620px;width:100%;text-align:center;padding:3.5rem 2.4rem;border:1px solid rgba(232,198,107,.24);border-radius:22px;background:rgba(18,10,46,.4);backdrop-filter:blur(10px);box-shadow:0 30px 80px -40px rgba(0,0,0,.8);}
+        .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--teal);margin-bottom:1.2rem;opacity:0;animation:rise .9s ease .1s forwards;transform:translateY(20px);}
+        .contact-card h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1;background:linear-gradient(180deg,var(--gold-bright),var(--gold) 55%,#b9923f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 24px rgba(232,198,107,.3));opacity:0;animation:rise 1s ease .25s forwards;transform:translateY(20px);}
+        .contact-card p{font-size:clamp(1.15rem,2.3vw,1.45rem);line-height:1.7;color:var(--cream);margin:1.6rem auto 2.2rem;max-width:440px;opacity:0;animation:rise 1s ease .4s forwards;transform:translateY(20px);}
+        .btn-gold{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;padding:1rem 2.4rem;border-radius:999px;text-decoration:none;background:linear-gradient(180deg,var(--gold-bright),var(--gold));color:#231a05;font-weight:500;transition:all .3s;opacity:0;animation:rise 1s ease .55s forwards;transform:translateY(20px);}
+        .btn-gold:hover{transform:translateY(-4px);box-shadow:0 16px 44px -12px rgba(232,198,107,.6);}
+        @keyframes rise{to{opacity:1;transform:translateY(0);}}
+        footer{text-align:center;padding:2.4rem 1rem;border-top:1px solid rgba(232,198,107,.2);background:rgba(7,11,31,.6);}
+        footer p{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.22em;color:var(--muted);}
+        footer .g{color:var(--gold);}
+        @media (prefers-reduced-motion:reduce){.aurora{animation:none;}.star{animation:twinkle 4s ease-in-out infinite;}.eyebrow,h1,.contact-card p,.btn-gold{animation:none;opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+    <div class="aurora"></div><div class="vignette"></div><div class="stars" id="stars"></div>
+    <header><nav><ul>
+        <li><a href="home">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="courses">Courses</a></li>
+    </ul></nav></header>
+
+    <main>
+        <div class="contact-card">
+            <p class="eyebrow">Get in Touch</p>
+            <h1>Contact Us</h1>
+            <p>Got a doubt while learning? Join our members-only exclusive Slack channel and get help from the community.</p>
+            <a href="#" class="btn-gold">Join Slack</a>
+        </div>
+    </main>
+
+    <footer><p>&copy; <span class="g">Prasan Gupta</span> &middot; Crafted with Go &amp; caffeine</p></footer>
+
+    <script>
+        (function(){const w=document.getElementById('stars');for(let i=0;i<45;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.transform='scale('+(Math.random()*1.6+0.4)+')';s.style.animationDelay=(Math.random()*-22)+'s, '+(Math.random()*-4)+'s';s.style.animationDuration=(18+Math.random()*12)+'s, '+(3+Math.random()*3)+'s';w.appendChild(s);}})();
+    </script>
+</body>
+</html>
